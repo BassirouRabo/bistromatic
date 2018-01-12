@@ -1,0 +1,7 @@
+char	*ft_infix_to_posfix(char *input, t_stack *stack, t_queue *queue)
+{
+	// stack -> operator
+	// Queue ->output
+	// list -> tockens
+	return (NULL);
+}
