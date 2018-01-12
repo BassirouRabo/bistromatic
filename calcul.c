@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 08:59:14 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/12 11:18:48 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/12 15:23:30 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ char		*call_operation(t_stack **stack, char *base, char type)
 	 if (!(*stack = stack_pop(*stack)))
 	 	return (NULL);
 	num2 = copy((*stack)->data);
-	
 	*stack = stack_pop(*stack);
 	if (IS_ADD(type))
 		return (operate_addition(base, num2, num1));
@@ -123,4 +122,22 @@ char		*negative_complement(char *base, char *str)
 	num1[i] = '\0';	
 	num2[i] = '\0';
 	return (add_negative(substraction(base, num1, num2)));
+}
+
+char		*operation_addition_zero(char *base, char *num1, char *num2)
+{
+	char	sign1;
+	char	sign2;
+	
+	sign1 = IS_SUB(*num1) ? '-' : '+';
+	sign2 = IS_SUB(*num2) ? '-' : '+';
+	if (IS_ADD(sign1) && IS_ADD(sign2))
+		return (addition(base, num1, num2));
+	if (IS_ADD(sign1) && IS_SUB(sign2))
+		return ("0");
+	if (IS_SUB(sign1) && IS_SUB(sign2))
+		return (add_negative(addition(base, ++num1, ++num2)));
+	if (IS_SUB(sign1) && IS_ADD(sign2))
+		return ("0");
+	return (NULL);
 }

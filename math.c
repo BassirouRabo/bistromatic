@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/12 01:44:50 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/12 12:39:35 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/12 15:31:31 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,13 +155,5 @@ char		*multiplication(char *base, char *num1, char *num2)
 
 char		*modulos(char *base, char *num1, char *num2)
 {
-	char	*res;
-	
-	printf("div [%s]\n",  operate_division(base, num1, num2));
-	printf("MUL [%s]\n",  operate_multiplication(base, num2, operate_division(base, num1, num2)));
-	printf("Sub [%s]\n", operate_substraction(base, num1, operate_multiplication(base, num2, operate_division(base, num1, num2))));
-	res = operate_substraction(base, num1, operate_multiplication(base, num2, operate_division(base, num1, num2)));
-	printf("%s \n", res);
-	
-	return (NULL);
+	return (operate_substraction(base, num1, operate_multiplication(base, num2, operate_division(base, num1, num2))));
 }

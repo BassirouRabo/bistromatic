@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 08:59:28 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/12 10:45:11 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/12 15:19:51 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ char		*ft_calculate(t_queue *rpn, char *base);
 char		*multiply(char *base, char *num1, char num2);
 char		*negative_complement(char *base, char *str);
 char		*call_operation(t_stack **stack, char *base, char type);
+char		*operation_addition_zero(char *base, char *num1, char *num2);
 
 #endif
