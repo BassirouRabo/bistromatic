@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 01:55:10 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/13 03:28:54 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/13 07:50:36 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int			shunting_operand(t_queue **rpn, t_queue *tk)
 
 int			shunting_operator_2(t_queue **rpn, t_queue *tk, t_stack **stack)
 {
+	(void)rpn;
 	if (!(*stack = stack_push(*stack, stack_new(tk->data, tk->type))))
 		return (0);
 	return (1);

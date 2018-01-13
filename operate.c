@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/12 01:00:14 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/13 01:27:38 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/13 07:49:03 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ char			*operate_multiplication(char *base, char *num1, char *num2)
 {
 	char	sign1;
 	char	sign2;
-	char	*out;
 
 	sign1 = IS_SUB(*num1) ? '-' : '+';
 	sign2 = IS_SUB(*num2) ? '-' : '+';
@@ -93,7 +92,6 @@ char			*operate_division(char *base, char *num1, char *num2)
 {
 	char	sign1;
 	char	sign2;
-	char	*out;
 
 	sign1 = IS_SUB(*num1) ? '-' : '+';
 	sign2 = IS_SUB(*num2) ? '-' : '+';
@@ -112,7 +110,6 @@ char			*operate_modulos(char *base, char *num1, char *num2)
 {
 	char	sign1;
 	char	sign2;
-	char	*out;
 
 	sign1 = IS_SUB(*num1) ? '-' : '+';
 	sign2 = IS_SUB(*num2) ? '-' : '+';

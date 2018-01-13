@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 18:38:01 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/13 02:15:30 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/13 07:32:03 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,18 @@ typedef enum		e_type
 	OPERATOR_2,
 	BRACKET
 }					t_type;
+
+typedef	struct		s_env
+{
+	char			*num1;
+	char			*num2;
+	char			*base;
+}					t_env;
+
+typedef struct		s_nb
+{
+	int				*len;
+	int				*res;
+}					t_nb;
 
 #endif
