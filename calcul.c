@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 08:59:14 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/12 15:23:30 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/13 00:20:19 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ char		*multiply(char *base, char *num1, char num2)
 		mul = carry + ((num1[i] - '0') * (num2 - '0'));
 		if (mul >= ft_strlen(base))
 		{
-			out[j] = *ft_itoa(mul % 10);
-			carry = mul / 10;
+			out[j] = *ft_itoa(mul % ft_strlen(base));
+			carry = mul / ft_strlen(base);
 		}
 		else
 		{

@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/12 01:44:50 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/12 15:31:31 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/13 00:21:57 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char		*substraction(char *base, char *num1, char *num2)
 		}
 		else
 		{
-			out[j] = *ft_itoa(((num1[i] - '0') + 10) - (num2[i] - '0')    - borrow);
+			out[j] = *ft_itoa(((num1[i] - '0') + ft_strlen(base)) - (num2[i] - '0')    - borrow);
 			borrow = 1;
 		}
 		i--;

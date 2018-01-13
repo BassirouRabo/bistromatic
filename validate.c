@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/12 02:07:40 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/12 02:56:48 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/13 00:46:11 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int		validate_c(char *base, char *input)
 {
+	int	i = 0;	
 	while (input && *input)
 	{
 		if (!(IS_VALID(base, *input)))

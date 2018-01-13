@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/12 01:00:14 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/12 15:29:47 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/13 00:48:53 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char			*operate_substraction(char *base, char *num1, char *num2)
 	char	sign1;
 	char	sign2;
 	int		cmp;
-	
+	printf("num1[%s] num2[%s]\n", num1, num2);
 	sign1 = IS_SUB(*num1) ? '-' : '+';
 	sign2 = IS_SUB(*num2) ? '-' : '+';
 	if (!(cmp = compare(base, num1, num2)))

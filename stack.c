@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/12 02:11:36 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/12 02:11:39 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/13 00:53:54 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,6 @@ t_stack      *stack_pop(t_stack *head)
         ft_memdel((void **)&head);
     }
     return (next);
-}
-
-void        stack_clear(t_stack *head)
-{
-    while (head)
-    {
-        head = stack_pop(head);
-        head = head->next;
-    }
 }
 
 void        stack_print(t_stack *head)

@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/12 02:11:51 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/12 02:11:53 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/13 00:53:30 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,19 +60,6 @@ t_queue			*queue_dequeue(t_queue *head)
 	ft_strdel(&head->next->data);
 	ft_memdel((void **)head->next);
 	return (cpy);
-}
-
-void			queue_clear(t_queue *head)
-{
-	t_queue	*next;
-
-	next = head;
-	while (next)
-	{
-		next = next->next;
-		ft_strdel(&head->data);
-		ft_memdel((void **)head);
-	}
 }
 
 void			queue_print(t_queue *head)

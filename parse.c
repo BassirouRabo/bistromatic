@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 18:37:41 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/12 11:13:05 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/13 00:50:14 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,5 +132,6 @@ int			ft_parse_token(t_queue **head, char *base, char *in)
 		else
 			return (0);
 	}
+	queue_print(*head);
 	return (1);
 }
