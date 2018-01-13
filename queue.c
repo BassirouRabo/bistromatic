@@ -6,13 +6,13 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/12 02:11:51 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/13 00:53:30 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/13 01:32:44 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "queue.h"
 
-t_queue			*queue_new(char	*data, t_type type)
+t_queue			*queue_new(char *data, t_type type)
 {
 	t_queue	*node;
 
@@ -31,6 +31,7 @@ t_queue			*queue_new(char	*data, t_type type)
 t_queue			*queue_enqueue(t_queue *head, t_queue *node)
 {
 	t_queue *cursor;
+
 	if (!node)
 		return (head);
 	if (!head)

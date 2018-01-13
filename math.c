@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/12 01:44:50 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/13 00:21:57 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/13 01:26:28 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ char		*substraction(char *base, char *num1, char *num2)
 		}
 		else
 		{
-			out[j] = *ft_itoa(((num1[i] - '0') + ft_strlen(base)) - (num2[i] - '0')    - borrow);
+			out[j] = *ft_itoa(((num1[i] - '0') + ft_strlen(base))
+					- (num2[i] - '0') - borrow);
 			borrow = 1;
 		}
 		i--;
@@ -73,7 +74,7 @@ char		*division(char *base, char *num1, char *num2)
 	while (ft_strlen(num2) < ft_strlen(num1) - 1)
 	{
 		n_tm++;
-		num2 = multiplication(base, num2, ft_itoa(ft_strlen(base))); 
+		num2 = multiplication(base, num2, ft_itoa(ft_strlen(base)));
 	}
 	n_tm = get_power(n_tm);
 	tmp = num2;
@@ -85,13 +86,12 @@ char		*division(char *base, char *num1, char *num2)
 		num2 = addition(base, num2, tmp);
 	}
 	n_tm = n_tm ? n_tm * n_sq : n_sq;
-		while ((cmp = compare(base, num1, addition(base, num2, cpy_num2))) >= 0)
+	while ((cmp = compare(base, num1, addition(base, num2, cpy_num2))) >= 0)
 	{
 		n_tm++;
 		num2 = addition(base, num2, cpy_num2);
 	}
-	// Handle repcision
-	return (ft_itoa(n_tm));	
+	return (ft_itoa(n_tm));
 }
 
 char		*addition(char *base, char *num1, char *num2)
@@ -101,7 +101,7 @@ char		*addition(char *base, char *num1, char *num2)
 	int		j;
 	int		carry;
 	int		sum;
-	
+
 	carry = 0;
 	j = 0;
 	num1 = add_zero_left(num2, num1);
@@ -155,5 +155,7 @@ char		*multiplication(char *base, char *num1, char *num2)
 
 char		*modulos(char *base, char *num1, char *num2)
 {
-	return (operate_substraction(base, num1, operate_multiplication(base, num2, operate_division(base, num1, num2))));
+	return (operate_substraction(base, num1,
+				operate_multiplication(base, num2,
+					operate_division(base, num1, num2))));
 }

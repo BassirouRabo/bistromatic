@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 18:59:17 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/12 11:12:47 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/13 01:13:17 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ char		*add_negative(char *str)
 {
 	char	*out;
 	int		i;
+
 	i = 0;
 	if (!(out = ft_memalloc(ft_strlen(str + 2))))
 		return (NULL);
@@ -73,7 +74,7 @@ char		*add_n_zero_left(char *dest, unsigned int n)
 {
 	int		i;
 	char	*out;
-	
+
 	if (!n || !dest)
 		return (dest);
 	i = 0;
@@ -91,7 +92,7 @@ char		*add_n_zero_right(char *dest, unsigned int n)
 {
 	int		i;
 	char	*out;
-	
+
 	if (!n || !dest)
 		return (dest);
 	i = 0;

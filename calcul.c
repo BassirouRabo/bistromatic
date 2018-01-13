@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 08:59:14 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/13 00:20:19 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/13 01:15:41 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ char		*ft_calculate(t_queue *rpn, char *base)
 	{
 		if (rpn->type == OPERAND)
 		{
-			
 			if (!(stack = stack_push(stack, stack_new(rpn->data, OPERAND))))
 				return (NULL);
 		}
@@ -43,14 +42,14 @@ char		*call_operation(t_stack **stack, char *base, char type)
 {
 	char	*num1;
 	char	*num2;
-	
+
 	num1 = NULL;
 	num2 = NULL;
 	if (!stack)
 		return (NULL);
 	num1 = copy((*stack)->data);
-	 if (!(*stack = stack_pop(*stack)))
-	 	return (NULL);
+	if (!(*stack = stack_pop(*stack)))
+		return (NULL);
 	num2 = copy((*stack)->data);
 	*stack = stack_pop(*stack);
 	if (IS_ADD(type))
@@ -73,14 +72,14 @@ char		*multiply(char *base, char *num1, char num2)
 	int		j;
 	int		carry;
 	int		mul;
-	
+
 	carry = 0;
 	j = 0;
 	if (!num1 || !num2)
 		return ("");
 	i = ft_strlen(num1) - 1;
 	if (!(out = ft_memalloc((i * 2) + 1)))
-		return (NULL);	
+		return (NULL);
 	while (j < ft_strlen(num1))
 	{
 		mul = carry + ((num1[i] - '0') * (num2 - '0'));
@@ -119,7 +118,7 @@ char		*negative_complement(char *base, char *str)
 		num1[i] = base[0];
 		num2[i++] = *str++;
 	}
-	num1[i] = '\0';	
+	num1[i] = '\0';
 	num2[i] = '\0';
 	return (add_negative(substraction(base, num1, num2)));
 }
@@ -128,7 +127,7 @@ char		*operation_addition_zero(char *base, char *num1, char *num2)
 {
 	char	sign1;
 	char	sign2;
-	
+
 	sign1 = IS_SUB(*num1) ? '-' : '+';
 	sign2 = IS_SUB(*num2) ? '-' : '+';
 	if (IS_ADD(sign1) && IS_ADD(sign2))

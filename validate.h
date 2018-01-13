@@ -6,12 +6,12 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/12 02:10:44 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/12 02:11:06 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/13 01:11:36 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VALIDATE_C
-# define VALIDATE_C
+#ifndef VALIDATE_H
+# define VALIDATE_H
 
 # include "header.h"
 # include "queue.h"

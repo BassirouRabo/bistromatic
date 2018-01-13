@@ -6,23 +6,19 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/12 02:12:25 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/13 00:48:01 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/13 01:22:50 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
-#include "validate.h"
-#include "queue.h"
-#include "parse.h"
-#include "calcul.h"
+#include "main.h"
 
-int 		print_error(void)
+int			print_error(void)
 {
 	ft_putstr("syntax error\n");
 	return (1);
 }
 
-int		ft_validate(char *base, char *input)
+int			ft_validate(char *base, char *input)
 {
 	if (!(validate_c(base, input)))
 		return (0);
@@ -35,21 +31,21 @@ int		ft_validate(char *base, char *input)
 	return (1);
 }
 
-int		print(char *str)
+int			print(char *str)
 {
 	ft_putstr(str);
 	ft_putchar('\n');
 	return (0);
 }
 
-int 		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
-	char 	*in;
-	char 	*base;
+	char	*in;
+	char	*base;
 	int		in_size;
 	t_queue	*tokens;
 	t_queue	*rpn;
-	
+
 	tokens = NULL;
 	rpn = NULL;
 	argc--;
@@ -64,7 +60,9 @@ int 		main(int argc, char **argv)
 	if (read(0, in, in_size) != in_size)
 		return (print_error());
 	in[in_size] = '\0';
-	if (!ft_validate(base, in) || !ft_parse_token(&tokens, base, in) || !ft_parse_shunting(&rpn, tokens) || !ft_parse_rpn(rpn) || !(base = ft_calculate(rpn, base)))
+	if (!ft_validate(base, in) || !ft_parse_token(&tokens, base, in) ||
+			!ft_parse_shunting(&rpn, tokens) || !ft_parse_rpn(rpn) ||
+			!(base = ft_calculate(rpn, base)))
 		return (print_error());
-    return print(base);
+	return (print(base));
 }

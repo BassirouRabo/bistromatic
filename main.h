@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helper.h                                           :+:      :+:    :+:   */
+/*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: brabo-hi <brabo-hi@student.42.us.or>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/12 02:12:36 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/13 01:04:19 by brabo-hi         ###   ########.fr       */
+/*   Created: 2018/01/13 01:18:52 by brabo-hi          #+#    #+#             */
+/*   Updated: 2018/01/13 01:20:50 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HELPER_H
-# define HELPER_H
+#ifndef MAIN_H
+# define MAIN_H
 
 # include "header.h"
+# include "validate.h"
+# include "queue.h"
+# include "parse.h"
+# include "calcul.h"
 
-char		get_sign(char *in);
-int			get_indice(char *base, char c);
-char		get_unary_sign(char *in);
-int			get_power(int n);
-int			is_unary(char *base, char *in);
-
+int			print_error(void);
+int			ft_validate(char *base, char *input);
+int			print(char *str);
+int			main(int argc, char **argv);
 #endif
