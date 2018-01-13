@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 18:37:41 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/13 03:59:11 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/13 04:17:40 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,7 @@ int			ft_parse_token(t_queue **head, char *base, char *in, int size)
 				return (0);
 			in += res;
 			len += res;
-		}
-		else
-			return (0);
+		}	
 	}
 	return (1);
 }
@@ -50,7 +48,6 @@ int			ft_parse_token(t_queue **head, char *base, char *in, int size)
 int			token_operand(t_queue **head, char *base, char **in, int *len)
 {
 	int		res;
-
 	res = 0;
 	if (!(res = set_operand(head, base, *in, 0)))
 		return (0);
@@ -62,7 +59,6 @@ int			token_operand(t_queue **head, char *base, char **in, int *len)
 int			token_add_sub(t_queue **head, char **in, int *len)
 {
 	int		res;
-
 	res = 0;
 	if (!(res = set_add_sub(head, *in)))
 		return (0);
@@ -74,7 +70,6 @@ int			token_add_sub(t_queue **head, char **in, int *len)
 int			token_mul_div_mod(t_queue **head, char *base, char **in, int *len)
 {
 	int		res;
-
 	res = 0;
 	if (!(res = set_mul_div_mod(head, base, *in)))
 		return (0);
@@ -86,7 +81,6 @@ int			token_mul_div_mod(t_queue **head, char *base, char **in, int *len)
 int			token_braket(t_queue **head, char **in, int *len)
 {
 	int		res;
-
 	res = 0;
 	if (!(res = set_bracket(head, *in)))
 		return (0);
