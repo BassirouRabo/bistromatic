@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/12 02:12:25 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/13 01:22:50 by brabo-hi         ###   ########.fr       */
+/*   Created: 2018/01/13 03:30:04 by brabo-hi          #+#    #+#             */
+/*   Updated: 2018/01/13 03:59:00 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,13 @@ int			main(int argc, char **argv)
 		return (print_error());
 	base = argv[0];
 	in_size = ft_atoi(argv[1]);
-	in_size = 12;
 	if (!(in = ft_memalloc(in_size + 1)))
 		return (1);
 	if (read(0, in, in_size) != in_size)
 		return (print_error());
 	in[in_size] = '\0';
-	if (!ft_validate(base, in) || !ft_parse_token(&tokens, base, in) ||
-			!ft_parse_shunting(&rpn, tokens) || !ft_parse_rpn(rpn) ||
-			!(base = ft_calculate(rpn, base)))
+	if (!ft_validate(base, in) || !ft_parse_token(&tokens, base, in, in_size) ||
+			!ft_shunting(&rpn, tokens) || !(base = ft_calculate(rpn, base)))
 		return (print_error());
 	return (print(base));
 }

@@ -26,6 +26,10 @@
         "unistd.h": "c",
         "__string": "c",
         "initializer_list": "c",
-        "set": "c"
+        "set": "c",
+        "__split_buffer": "c",
+        "deque": "c",
+        "queue": "c",
+        "vector": "c"
     }
 }

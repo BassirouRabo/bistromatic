@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.h                                             :+:      :+:    :+:   */
+/*   shunting.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/13 01:18:52 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/13 02:08:08 by brabo-hi         ###   ########.fr       */
+/*   Created: 2018/01/13 01:55:32 by brabo-hi          #+#    #+#             */
+/*   Updated: 2018/01/13 03:25:18 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#ifndef SHUNTING_H
+# define SHUNTING_H
 
 # include "header.h"
-# include "validate.h"
 # include "queue.h"
-# include "parse.h"
-# include "calcul.h"
-# include "shunting.h"
+# include "stack.h"
+# include "validate.h"
 
-int			print_error(void);
-int			ft_validate(char *base, char *input);
-int			print(char *str);
-int			main(int argc, char **argv);
+int			ft_shunting(t_queue **rpn, t_queue *tk);
+int			shunting_operand(t_queue **rpn, t_queue *tk);
+int			shunting_operator_2(t_queue **rpn, t_queue *tk, t_stack **stack);
+int			shunting_operator_1(t_queue **rpn, t_queue *tk, t_stack **stack);
+int			shunting_bracket(t_queue **rpn, t_queue *tk, t_stack **stack);
+
 #endif

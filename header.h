@@ -6,13 +6,14 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 18:38:01 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/13 01:03:17 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/13 02:15:30 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_HEADER_H
 # define FT_HEADER_H
 
+# include <stdio.h>
 # include <stdlib.h>
 # include <sys/types.h>
 # include <sys/uio.h>
