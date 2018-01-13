@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   math.h                                             :+:      :+:    :+:   */
+/*   modulos.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/12 01:50:12 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/13 04:40:44 by brabo-hi         ###   ########.fr       */
+/*   Created: 2018/01/13 04:35:50 by brabo-hi          #+#    #+#             */
+/*   Updated: 2018/01/13 04:36:30 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATH_H
-# define MATH_H
+#include "modulos.h"
 
-# include "addition.h"
-# include "substraction.h"
-# include "multiplication.h"
-# include "division.h"
-# include "modulos.h"
-
-#endif
+char		*modulos(char *base, char *num1, char *num2)
+{
+	return (operate_substraction(base, num1,
+				operate_multiplication(base, num2,
+					operate_division(base, num1, num2))));
+}

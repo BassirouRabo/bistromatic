@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   math.h                                             :+:      :+:    :+:   */
+/*   addition.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/12 01:50:12 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/13 04:40:44 by brabo-hi         ###   ########.fr       */
+/*   Created: 2018/01/13 04:29:06 by brabo-hi          #+#    #+#             */
+/*   Updated: 2018/01/13 04:40:22 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATH_H
-# define MATH_H
+#ifndef ADDITION_H
+# define ADDITION_H
 
-# include "addition.h"
+# include "header.h"
+# include "calcul.h"
 # include "substraction.h"
 # include "multiplication.h"
 # include "division.h"
 # include "modulos.h"
+
+char		*addition(char *base, char *num1, char *num2);
 
 #endif
