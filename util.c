@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/12 10:27:45 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/13 07:32:35 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/13 09:09:17 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,10 @@ t_nb		*new_nb(int *len, int *res)
 	node->len = len;
 	node->res = res;
 	return (node);
+}
+
+void		init_sign(char *num1, char *num2, char *sign1, char *sign2)
+{
+	*sign1 = IS_SUB(*num1) ? '-' : '+';
+	*sign2 = IS_SUB(*num2) ? '-' : '+';
 }
