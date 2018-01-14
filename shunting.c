@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 01:55:10 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/13 07:50:36 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/14 03:07:13 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int			ft_shunting(t_queue **rpn, t_queue *tk)
 			return (0);
 		stack = stack_pop(stack);
 	}
+	printf("\n");
+	queue_print(*rpn);
 	return (validate_rpn(*rpn));
 }
 

@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/12 01:00:31 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/13 01:05:28 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/14 02:10:24 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "header.h"
 # include "calcul.h"
+# include "tools.h"
 
 char			*operate_addition(char *base, char *num1, char *num2);
 char			*operate_substraction(char *base, char *num1, char *num2);

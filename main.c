@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 03:30:04 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/13 08:54:51 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/14 01:16:09 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,16 @@ int			ft_validate(char *base, char *input)
 {
 	if (!(validate_c(base, input)))
 		return (0);
+	//	printf("#\n");
 	if (!(validate_start_end(base, input)))
 		return (0);
+//		printf("#\n");
 	if (!(validate_next(base, input)))
 		return (0);
+	//	printf("#\n");
 	if (!valide_balance(input))
 		return (0);
+	//	printf("#\n");
 	return (1);
 }
 
@@ -50,6 +54,7 @@ int			main(int argc, char **argv)
 	rpn = NULL;
 	argc--;
 	argv++;
+	
 	if (argc != 2)
 		return (print_error());
 	base = argv[0];
