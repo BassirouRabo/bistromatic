@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/12 02:12:07 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/13 07:23:55 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/14 06:46:59 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@
 # include "util.h"
 
 int			ft_parse_token(t_queue **head, char *base, char *in, int size);
+int			set_first_sign(t_queue **head, char *base, char *in);
 
 #endif

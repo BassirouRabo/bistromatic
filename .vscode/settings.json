@@ -30,6 +30,7 @@
         "__split_buffer": "c",
         "deque": "c",
         "queue": "c",
-        "vector": "c"
+        "vector": "c",
+        "algorithm": "c"
     }
 }

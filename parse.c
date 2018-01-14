@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 18:37:41 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/14 01:44:40 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/14 06:58:37 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,41 @@ int			ft_parse_token(t_queue **head, char *base, char *in, int size)
 
 	res = 0;
 	len = 0;
-	if (is_unary(base, in))
+	//printf("IN [%s]\n", in);
+	if (IS_OPERATOR_1(*in))
 	{
-		if (!(res = set_unary_operand(head, base, in)))
+		while (in && *in && IS_OPERATOR_1(*in))
+			in++;
+		if (!set_first_sign(head, base, in))
 			return (0);
-		in += res;
-		len += res;
 	}
+//	printf("IN [%s]\n", in);
 	while (len < size && in && *in)
 	{
-		if (!parse_init(base, &in, head, new_nb(&len, &res)))
+		if (!parse_init(head, base, &in, new_nb(&len, &res)))
 			return (0);
 	}
-	queue_print(*head);
+//	queue_print(*head);
+	return (1);
+}
+
+int			set_first_sign(t_queue **head, char *base, char *in)
+{
+	char	*num;
+	char	*mul;
+
+	if (IS_ADD(*in))
+		return (1);
+	if (!(num = ft_memalloc(3)) || !(mul = ft_memalloc(2)))
+		return (0);
+	num[0] = '-';
+	num[1] = base[1];
+	num[2] = '\0';
+	mul[0] = '*';
+	mul[1] = '\0';
+	if (!(*head = queue_enqueue(*head, queue_new(num, OPERAND))))
+		return (0);
+	if (!(*head = queue_enqueue(*head, queue_new(mul, OPERATOR_2))))
+		return (0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 05:23:36 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/13 01:34:35 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/14 06:59:10 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,55 +38,85 @@ int			set_operand(t_queue **head, char *base, char *in, int sign)
 	return (len = sign ? len - 1 : len);
 }
 
-int			set_unary_operand(t_queue **head, char *base, char *in)
+int			set_unary(t_queue **head, char *base, char *in)
 {
 	char	sign;
 	int		res;
-	int		res_operand;
-
+	int		res_op;
+	
 	res = 0;
 	sign = get_unary_sign(in);
-	while (in && *in && !IS_OPERAND(base, *in))
-	{
-		if (IS_OPEN(*in))
-		{
-			if (!(set_bracket(head, in)))
-				return (0);
-		}
+	while (in && *in && IS_OPERATOR_1(*in++))
 		res++;
-		in++;
-	}
-	if (!(res_operand = set_operand(head, base, in, IS_SUB(sign) ? 1 : 0)))
+	if (IS_OPERAND(base, *in))
+	{
+		if (!(res_op = set_operand(head, base, in, IS_SUB(sign) ? 1 : 0)))
 		return (0);
-	return (res + res_operand);
+	}
+	else if (IS_OPEN(*in))
+	{
+		if (!(set_minus(head, base, in, sign)))
+			return (0);
+	}
+	return (res + res_op);
 }
 
-int			set_add_sub(t_queue **head, char *in)
+int			set_minus(t_queue **head, char *base, char *in, char sign)
 {
+	char	*plus;
+	char	*num;
+	char	*mul;
+	int		i;
+	
+	i = 0;
+	if (!(num = ft_memalloc(3)) || !(mul = ft_memalloc(2))|| !(plus = ft_memalloc(2)))
+		return (0);
+	num[i++] = sign;
+	num[i++] = base[1];
+	num[i] = '\0';
+	mul[0] = '*';
+	mul[1] = '\0';
+	plus[0] = '+';
+	plus[1] = '\0';
+	if (!(*head = queue_enqueue(*head, queue_new(plus, OPERATOR_1))))
+		return (0);
+	if (!(*head = queue_enqueue(*head, queue_new(num, OPERAND))))
+		return (0);
+	if (!(*head = queue_enqueue(*head, queue_new(mul, OPERATOR_2))))
+		return (0);
+	return (++i);
+}
+
+int			set_add_sub(t_queue **head, char *base, char *in)
+{
+	char	sign;
 	int		len;
 	char	*data;
+	int		res_op;
 
+	res_op = 0;
+	sign = get_unary_sign(in);
 	len = 0;
 	if (!(data = ft_memalloc(2)))
 		return (0);
-	data[0] = get_unary_sign(in);
+	data[0] = sign;
 	data[1] = '\0';
-	while (in && *in && (IS_OPERATOR_1(*in) || IS_OPEN(*in)))
-	{
-		if (IS_OPEN(*in))
-		{
-			if (!(set_bracket(head, in)))
-				return (0);
-		}
-		in++;
+	while (in && *in && (IS_OPERATOR_1(*in) && in++))
 		len++;
-	}
-	if (!(*head = queue_enqueue(*head, queue_new(data, OPERATOR_1))))
+	if (IS_OPEN(*in))
 	{
-		ft_strdel(&data);
-		return (0);
+		if (!(set_minus(head, base, in, sign)))
+			return (0);
 	}
-	return (len);
+	else
+	{
+		if (!(*head = queue_enqueue(*head, queue_new(data, OPERATOR_1))))
+		{
+			ft_strdel(&data);
+			return (0);
+		}
+	}
+	return (len + res_op);
 }
 
 int			set_mul_div_mod(t_queue **head, char *base, char *in)
@@ -106,26 +136,35 @@ int			set_mul_div_mod(t_queue **head, char *base, char *in)
 		ft_strdel(&data);
 		return (0);
 	}
-	if (in && *in && (IS_OPERATOR_1(*in) || IS_OPEN(*in)))
+	if (in && *in && (IS_OPERATOR_1(*in)))
 	{
-		if (!(res = set_unary_operand(head, base, in)))
+		if (!(res = set_unary(head, base, in)))
 			return (0);
 	}
 	return (++res);
 }
 
-int			set_bracket(t_queue **head, char *in)
+int			set_bracket(t_queue **head, char *base, char *in)
 {
 	char	*data;
+	int		res;
 
+	res = 0;
 	if (!(data = ft_memalloc(2)))
 		return (0);
 	data[0] = *in;
 	data[1] = '\0';
+	//printf("data [%s]\n", data);
 	if (!(*head = queue_enqueue(*head, queue_new(data, BRACKET))))
 	{
 		ft_strdel(&data);
 		return (0);
 	}
-	return (1);
+	if (in && *in && (IS_OPERATOR_1(*in)))
+	{
+		if (!(res = set_unary(head, base, in)))
+			return (0);
+	}
+	//printf("res [%d]\n", res);
+	return (++res);
 }

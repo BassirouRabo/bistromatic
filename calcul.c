@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 08:59:14 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/13 07:46:18 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/14 08:01:14 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,21 +47,29 @@ char		*call_operation(t_stack **stack, char *base, char type)
 	num2 = NULL;
 	if (!stack)
 		return (NULL);
-	num1 = copy((*stack)->data);
+	num2 = copy((*stack)->data);
 	if (!(*stack = stack_pop(*stack)))
 		return (NULL);
-	num2 = copy((*stack)->data);
+	num1 = copy((*stack)->data);
 	*stack = stack_pop(*stack);
 	if (IS_ADD(type))
-		return (operate_addition(base, num2, num1));
+	{
+		char * res = operate_addition(base, num1, num2);
+		
+		return (res);
+	}
 	if (IS_SUB(type))
-		return (operate_substraction(base, num2, num1));
+	{
+		printf("SUB num1[%s] num2[%s]\n", num1, num2);
+		return (operate_substraction(base, num1, num2));
+	}
+		
 	if (IS_MUL(type))
-		return (operate_multiplication(base, num2, num1));
+		return (operate_multiplication(base, num1, num2));
 	if (IS_DIV(type))
-		return (operate_division(base, num2, num1));
+		return (operate_division(base, num1, num2));
 	if (IS_MOD(type))
-		return (operate_modulos(base, num2, num1));
+		return (operate_modulos(base, num1, num2));
 	return (NULL);
 }
 
