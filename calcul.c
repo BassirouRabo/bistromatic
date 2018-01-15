@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 08:59:14 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/14 08:03:43 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/15 04:06:51 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,11 @@ char		*multiply(char *base, char *num1, char num2)
 	int		carry;
 	int		mul;
 
-	carry = 0;
-	j = 0;
-	if (!num1 || !num2)
+	if ((carry = 0) && (!num1 || !num2))
 		return ("");
+	j = 0;
 	i = ft_strlen(num1) - 1;
-	if (!(out = ft_memalloc((i * 2) + 1)))
-		return (NULL);
+	out = ft_memalloc((i * 2) + 1);
 	while ((size_t)j < ft_strlen(num1))
 	{
 		mul = carry + ((num1[i] - '0') * (num2 - '0'));
@@ -96,10 +94,7 @@ char		*multiply(char *base, char *num1, char num2)
 		i--;
 		j++;
 	}
-	if (carry)
-		out[j++] = *ft_itoa(carry);
-	out[j] = '\0';
-	return (ft_strrev(out));
+	return (init_multiply(carry, out, j));
 }
 
 char		*negative_complement(char *base, char *str)

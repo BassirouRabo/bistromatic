@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 04:31:43 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/14 14:47:43 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/15 03:30:07 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ char		*substraction(char *base, char *num1, char *num2)
 	int		j;
 	char	*nb2;
 	int		borrow;
-//printf("SUB[%s] [%s]\n", num1, num2);
+
 	j = 0;
-	substraction_init(&num1, &num2, &borrow, &i);	
+	substraction_init(&num1, &num2, &borrow, &i);
 	if (!(out = ft_memalloc(i + 3)))
 		return (NULL);
 	out[i + 1] = '\0';
@@ -36,14 +36,11 @@ char		*substraction(char *base, char *num1, char *num2)
 	if (!ft_strcmp((const char *)num1, (const char *)num2))
 		return (out);
 	out = ft_strrev(out);
-	char *res = substraction_return(base, out, borrow);
-	//printf("res SUB[%s]\n", res);
-	return (res);
+	return (substraction_return(base, out, borrow));
 }
 
 void		substraction_help(char *base, t_env *node, char *out, int *borrow)
 {
-	
 	if (*node->num1 >= *node->num2)
 	{
 		*out = *ft_itoa((*node->num1 - '0') - (*node->num2 - '0') - *borrow);
@@ -54,7 +51,7 @@ void		substraction_help(char *base, t_env *node, char *out, int *borrow)
 		*out = *ft_itoa(((*node->num1 - '0') + ft_strlen(base))
 				- (*node->num2 - '0') - *borrow);
 		*borrow = 1;
-	}	
+	}
 }
 
 void		substraction_init(char **num1, char **num2, int *borrow, int *i)

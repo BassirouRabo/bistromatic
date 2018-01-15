@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 04:33:40 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/14 14:47:48 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/15 04:10:49 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char		*multiplication(char *base, char *num1, char *num2)
 	char	*mul;
 	char	*sum;
 	int		j;
-//
+
 	if (!ft_strlen(num2))
 		return (num1);
 	mul = "";
@@ -31,6 +31,10 @@ char		*multiplication(char *base, char *num1, char *num2)
 		mul = sum ? add_n_zero_right(mul, j++) : mul;
 		sum = addition(base, sum, mul);
 	}
-	//	printf("sum [%s]\n", sum);	
 	return (sum);
+}
+
+void		initial_multiply(void)
+{
+	return ;	
 }
