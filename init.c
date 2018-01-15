@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/15 03:06:43 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/15 04:02:16 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/15 04:20:36 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int			set_add_sub(t_queue **head, char *base, char *in)
 	int		res_op;
 
 	res_op = 0;
+	data = NULL;
 	sign = get_unary_sign(in);
 	if (!init_set_add_sub(data, sign, &len))
 		return (0);
@@ -33,16 +34,13 @@ int			set_add_sub(t_queue **head, char *base, char *in)
 		len++;
 	if (IS_OPEN(*in))
 	{
-		if (!(set_minus(head, base, in, sign)))
+		if (!(set_minus(head, base, sign)))
 			return (0);
 	}
-	else
+	else if (!(*head = queue_enqueue(*head, queue_new(data, OPERATOR_1))))
 	{
-		if (!(*head = queue_enqueue(*head, queue_new(data, OPERATOR_1))))
-		{
-			ft_strdel(&data);
-			return (0);
-		}
+		ft_strdel(&data);
+		return (0);
 	}
 	return (len + res_op);
 }

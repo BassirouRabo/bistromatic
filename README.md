@@ -1,3 +1,0 @@
-## bistromatic
-Universal calculator
-

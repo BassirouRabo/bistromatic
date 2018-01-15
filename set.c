@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 05:23:36 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/15 03:24:22 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/15 04:19:18 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int			set_unary(t_queue **head, char *base, char *in)
 
 	res = 0;
 	sign = get_unary_sign(in);
+	res_op = 0;
 	while (in && *in && IS_OPERATOR_1(*in))
 	{
 		res++;
@@ -56,15 +57,12 @@ int			set_unary(t_queue **head, char *base, char *in)
 		if (!(res_op = set_operand(head, base, in, IS_SUB(sign) ? 1 : 0)))
 			return (0);
 	}
-	else if (IS_OPEN(*in))
-	{
-		if (!(set_minus(head, base, in, sign)))
-			return (0);
-	}
+	else if (IS_OPEN(*in) && !(set_minus(head, base, sign)))
+		return (0);
 	return (res + res_op);
 }
 
-int			set_minus(t_queue **head, char *base, char *in, char sign)
+int			set_minus(t_queue **head, char *base, char sign)
 {
 	char	*plus;
 	char	*num;
@@ -101,6 +99,7 @@ int			set_mul_div_mod(t_queue **head, char *base, char *in)
 
 	i = 1;
 	res = 0;
+	data = NULL;
 	if (!(data = ft_memalloc(i + 1)))
 		return (0);
 	data[0] = *in++;
@@ -137,7 +136,7 @@ int			set_bracket(t_queue **head, char *base, char *in)
 	{
 		while (in && *in && IS_OPERATOR_1(*in) && res++)
 			in++;
-		if (!set_minus(head, base, in, get_unary_sign(in)))
+		if (!set_minus(head, base, get_unary_sign(in)))
 			return (0);
 	}
 	return (++res);

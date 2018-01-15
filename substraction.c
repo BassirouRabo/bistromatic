@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 04:31:43 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/15 03:30:07 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/15 04:14:57 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ char		*substraction(char *base, char *num1, char *num2)
 	char	*out;
 	int		i;
 	int		j;
-	char	*nb2;
 	int		borrow;
 
 	j = 0;

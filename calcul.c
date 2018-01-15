@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 08:59:14 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/15 04:06:51 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/15 04:44:05 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,17 +75,13 @@ char		*multiply(char *base, char *num1, char num2)
 
 	if ((carry = 0) && (!num1 || !num2))
 		return ("");
-	j = 0;
-	i = ft_strlen(num1) - 1;
-	out = ft_memalloc((i * 2) + 1);
+	out = NULL;
+	initial_multiply(num1, &out, &i, &j);
 	while ((size_t)j < ft_strlen(num1))
 	{
 		mul = carry + ((num1[i] - '0') * (num2 - '0'));
 		if ((size_t)mul >= ft_strlen(base))
-		{
-			out[j] = *ft_itoa(mul % ft_strlen(base));
-			carry = mul / ft_strlen(base);
-		}
+			help_multiply(&out, &carry, new_nb(&mul, &j), base);
 		else
 		{
 			out[j] = *ft_itoa(mul);

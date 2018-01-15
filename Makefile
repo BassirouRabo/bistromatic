@@ -6,7 +6,7 @@
 #    By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/13 07:37:23 by brabo-hi          #+#    #+#              #
-#    Updated: 2018/01/13 07:43:34 by brabo-hi         ###   ########.fr        #
+#    Updated: 2018/01/15 04:47:18 by brabo-hi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRC=\
 	calcul.c\
 	division.c\
 	helper.c\
+	init.c\
 	main.c\
 	modulos.c\
 	multiplication.c\
@@ -28,6 +29,7 @@ SRC=\
 	stack.c\
 	substraction.c\
 	token.c\
+	tools.c\
 	util.c\
 	validate.c
 

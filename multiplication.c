@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 04:33:40 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/15 04:10:49 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/15 04:44:19 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,20 @@ char		*multiplication(char *base, char *num1, char *num2)
 	return (sum);
 }
 
-void		initial_multiply(void)
+void		initial_multiply(char *num1, char **out, int *i, int *j)
 {
-	return ;	
+	*j = 0;
+	*i = ft_strlen(num1) - 1;
+	*out = ft_memalloc((*i * 2) + 1);
+}
+
+void		help_multiply(char **out, int *carry, t_nb *nb, char *base)
+{
+	int		mul;
+	int		j;
+
+	mul = *(nb)->len;
+	j = *(nb)->res;
+	*out[j] = *ft_itoa(mul % ft_strlen(base));
+	*carry = mul / ft_strlen(base);
 }
