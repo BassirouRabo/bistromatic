@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 01:55:10 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/14 06:59:51 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/14 16:10:45 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,15 @@
 int			ft_shunting(t_queue **rpn, t_queue *tk)
 {
 	t_stack	*stack;
-
+	printf("SHUNTING\n");
+	queue_print(tk);
+//	printf("\n");
 	stack = NULL;
 	while (tk)
 	{
+	//	printf("Token [%s]\n", tk->data);
+	//	stack_print(stack);
+		
 		if (tk->type == OPERAND && !(shunting_operand(rpn, tk)))
 			return (0);
 		if (tk->type == OPERATOR_2 && !(shunting_operator_2(rpn, tk, &stack)))
@@ -35,9 +40,9 @@ int			ft_shunting(t_queue **rpn, t_queue *tk)
 			return (0);
 		stack = stack_pop(stack);
 	}
-	printf("\n");
+	printf("SHUNTING\n");
 	queue_print(*rpn);
-	printf("\n");
+//	printf("\n");
 	return (validate_rpn(*rpn));
 }
 
@@ -58,16 +63,19 @@ int			shunting_operator_2(t_queue **rpn, t_queue *tk, t_stack **stack)
 
 int			shunting_operator_1(t_queue **rpn, t_queue *tk, t_stack **stack)
 {
+//	stack_print(*stack);
 	while (stack && *stack && (*stack)->type == OPERATOR_2)
 	{
+	//	printf("#\n"); 
 		if (!(*rpn = queue_enqueue(*rpn,
 						queue_new((*stack)->data, (*stack)->type))))
 			return (0);
-		if (!(*stack = stack_pop(*stack)))
-			return (0);
+	//	printf("#\n"); 
+		*stack = stack_pop(*stack);
 	}
 	if (!(*stack = stack_push(*stack, stack_new(tk->data, tk->type))))
 		return (0);
+//	stack_print(*stack);
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 05:23:36 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/14 06:59:10 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/14 15:10:28 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,14 @@ int			set_unary(t_queue **head, char *base, char *in)
 	
 	res = 0;
 	sign = get_unary_sign(in);
-	while (in && *in && IS_OPERATOR_1(*in++))
+	
+	while (in && *in && IS_OPERATOR_1(*in))
+	{
 		res++;
+		in++;
+	}
+		
+		printf("sign [%c] in[%s]\n", sign, in);
 	if (IS_OPERAND(base, *in))
 	{
 		if (!(res_op = set_operand(head, base, in, IS_SUB(sign) ? 1 : 0)))
@@ -152,7 +158,7 @@ int			set_bracket(t_queue **head, char *base, char *in)
 	res = 0;
 	if (!(data = ft_memalloc(2)))
 		return (0);
-	data[0] = *in;
+	data[0] = *in++;
 	data[1] = '\0';
 	//printf("data [%s]\n", data);
 	if (!(*head = queue_enqueue(*head, queue_new(data, BRACKET))))
@@ -162,9 +168,10 @@ int			set_bracket(t_queue **head, char *base, char *in)
 	}
 	if (in && *in && (IS_OPERATOR_1(*in)))
 	{
-		if (!(res = set_unary(head, base, in)))
+		while (in && *in && IS_OPERATOR_1(*in) && res++)
+			in++;
+		if (!set_minus(head, base, in, get_unary_sign(in)))
 			return (0);
 	}
-	//printf("res [%d]\n", res);
 	return (++res);
 }

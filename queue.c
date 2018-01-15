@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/12 02:11:51 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/13 01:32:44 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/14 12:35:56 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,15 @@ t_queue			*queue_dequeue(t_queue *head)
 
 void			queue_print(t_queue *head)
 {
+	printf("*** QUEUE ***\n");
 	while (head)
 	{
 		ft_putstr(head->data);
-		ft_putchar('\n');
+		ft_putchar(' ');
 		head = head->next;
 	}
+	ft_putchar('\n');
+	printf("*** QUEUE END ***\n\n");
 }
 
 int				queue_len(t_queue *head)

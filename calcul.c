@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 08:59:14 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/14 08:01:14 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/14 08:03:43 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,9 @@ char		*call_operation(t_stack **stack, char *base, char type)
 	num1 = copy((*stack)->data);
 	*stack = stack_pop(*stack);
 	if (IS_ADD(type))
-	{
-		char * res = operate_addition(base, num1, num2);
-		
-		return (res);
-	}
+		return (operate_addition(base, num1, num2));
 	if (IS_SUB(type))
-	{
-		printf("SUB num1[%s] num2[%s]\n", num1, num2);
 		return (operate_substraction(base, num1, num2));
-	}
-		
 	if (IS_MUL(type))
 		return (operate_multiplication(base, num1, num2));
 	if (IS_DIV(type))

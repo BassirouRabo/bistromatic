@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/12 02:11:36 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/13 01:39:23 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/14 12:36:12 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,15 @@ t_stack			*stack_pop(t_stack *head)
 
 void			stack_print(t_stack *head)
 {
+	printf("*** STACK ***\n");
 	while (head)
 	{
 		ft_putstr(head->data);
-		ft_putchar('\n');
+		ft_putchar(' ');
 		head = head->next;
 	}
+	ft_putchar('\n');
+	printf("*** STACK END ***\n\n");
 }
 
 int				stack_len(t_stack *head)
