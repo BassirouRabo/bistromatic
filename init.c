@@ -6,7 +6,7 @@
 /*   By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/15 03:06:43 by brabo-hi          #+#    #+#             */
-/*   Updated: 2018/01/15 04:20:36 by brabo-hi         ###   ########.fr       */
+/*   Updated: 2018/01/15 05:11:52 by brabo-hi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ int			set_add_sub(t_queue **head, char *base, char *in)
 
 	res_op = 0;
 	data = NULL;
+	len = 0;
 	sign = get_unary_sign(in);
-	if (!init_set_add_sub(data, sign, &len))
+	if (!(data = init_data_sign(sign)))
 		return (0);
 	while (in && *in && (IS_OPERATOR_1(*in) && in++))
 		len++;
@@ -45,14 +46,15 @@ int			set_add_sub(t_queue **head, char *base, char *in)
 	return (len + res_op);
 }
 
-int			init_set_add_sub(char *data, char sign, int *len)
+char		*init_data_sign(char sign)
 {
-	*len = 0;
+	char	*data;
+
 	if (!(data = ft_memalloc(2)))
-		return (0);
+		return (NULL);
 	data[0] = sign;
 	data[1] = '\0';
-	return (1);
+	return (data);
 }
 
 void		init_parse_init(int **len, int **res, t_nb *nb)

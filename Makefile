@@ -6,7 +6,7 @@
 #    By: brabo-hi <brabo-hi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/13 07:37:23 by brabo-hi          #+#    #+#              #
-#    Updated: 2018/01/15 04:47:18 by brabo-hi         ###   ########.fr        #
+#    Updated: 2018/01/15 05:38:11 by brabo-hi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ all:$(NAME)
 
 $(NAME):
 	@cd $(LIBFT) && make
-	@gcc -c $(SRC) $(FLAGS)
+	@gcc -c $(SRC) $(FLAGS)                                                   
 	@gcc -g $(SRC:.c=.o) -o $(NAME) libft/libft.a
 
 clean:
